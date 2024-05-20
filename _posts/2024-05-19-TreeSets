@@ -1,0 +1,21 @@
+---
+title: "Tree Sets"
+date: 2024-05-19
+---
+
+## Serializing Program update
+
+I have been working on a serializer project that simply writes a set of games to a csv file and reads them back out. What i have learned on this:
+
+1) Tree sets take the data and cross checks it against its self using your compareTo() method. This automatically organizes your set as outlined by your compareTo() method(you can set your compare to to reverse the sign of the returned int to reverse the direction it's organized)
+2)TreeSets also use the compareTo() method to determine if the item in the set is a repeat. With a set not being able to have a repeat, this is a handy little feature to have. 
+
+side note that i can't let myself forget: in intelij, you can use the breadcrumbs in the bottom of the screen to jump to a specific funciton in a class. I Need to put together a hotkey post for this so i can move through my ide with a little more fluency. 
+
+nio is difficult to understand. from what I have put together is:
+Files.<says your going to do something with nio>action<readString/writeString can also use byte but thats above me>(Paths.<says where we're going>get("filename")<fetches the file>, <designation for how to read it>)
+making it look like this:
+Files.readString(Path.get(file),StandardCharsets.UTF8)
+The append is very important as well
+Files.writeString(Paths.get(file),<What youre writing>, StandardOpenOption.Append)
+I will be looking into how to more efficiently ensure i am not writing duplicates because the method i have right now reads the whole file until it finds a match and if it doesnt, then it writes it. this is horribly inefficient like O(n^n) inefficient. 
